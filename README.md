@@ -27,25 +27,15 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3. 모델 파일 다운로드
-다음 모델 파일들을 다운로드하여 해당 폴더에 저장해야 합니다:
+### 3. 모델 파일
+이 프로젝트는 다음 모델 파일들을 사용합니다:
 
-- **YOLO 모델**: `process/model/` 폴더
-  - `seg.pt` - 세그멘테이션 모델
-  - `detect6.pt` - 품종 감지 모델
-  - `0818.pt` - 객체 감지 모델
+- **YOLO 모델들** (`process/model/` 폴더)
+- **Stable Diffusion 모델** (`process/converted-model/` 폴더)  
+- **LoRA 가중치들** (`process/lora/` 폴더)
+- **FAISS 검색 인덱스들** (`process/CLIP/` 폴더)
 
-- **Stable Diffusion 모델**: `process/converted-model/realistic-hypervae/` 폴더
-  - Hugging Face에서 다운로드
-
-- **LoRA 가중치**: `process/lora/` 폴더
-  - 각 품종별 LoRA 파일들
-
-- **FAISS 인덱스**: `process/CLIP/` 폴더
-  - `dog_index_img.faiss` - 이미지 임베딩 인덱스
-  - `dog_ids_img.npy` - 이미지 ID 배열
-  - `dog_colors_lab.npy` - 색상 Lab 값 배열
-  - `dog_breeds.npy` - 품종 정보 배열
+**주의**: 대용량 모델 파일들은 Git에 포함되지 않습니다. 로컬 환경에서만 사용 가능합니다.
 
 ## 사용법
 
@@ -53,7 +43,6 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-서버가 실행되면 `http://localhost:5000`에서 웹 인터페이스를 사용할 수 있습니다.
 
 ### CLI 사용
 ```bash
@@ -98,8 +87,5 @@ Server/
 
 ## 주의사항
 - 대용량 모델 파일들은 Git에 포함되지 않습니다
-- 모델 파일들을 수동으로 다운로드해야 합니다
-- GPU 사용을 권장합니다 (CUDA 지원)
+- 모델 파일들은 따로 구하셔야 합니다
 
-## 라이선스
-이 프로젝트는 연구 및 교육 목적으로 제작되었습니다.
